@@ -1,0 +1,46 @@
+---
+title: "sales"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(data.table)
+library(foreign)
+```
+
+# Sales project: Comcast Data
+
+If I choose a goal level higher than one would predict then asymmetric information.
+Here is asymmetric based on econometric modeling. Try to confirm or disconfirm the model.
+
+Likelihood of achieving: 80\%
+
+Likely_L4: Should be likelihood of baseline
+
+Behavioral data: What they choose (likelihood): Survey data (likelihood of achieving each goal). Signals not only over confidence but asymmetric information.
+Question of how hard they are going to work. If likelihood is 100\% but don't have to work that hard.
+
+## 2014
+
+1. Goal Selection
+2. Performance Data
+
+## 2015
+
+1. Goal Selection
+2. Survey (Nothing about 2014 program)
+3. Performance data
+4. Post Survey (If there was a 2016 program what is the likelihood of achieving you would take goal level 1,2,3 next time )
+    a. PostEffort: The goal required a great amount of effort to achieve?
+    b. PostEffortSatsf: Are you satisfied with the amount of effort you put in?
+    b. PostGoalDiff: PostGoalDifficulty
+    d. PostEffort: Did the goal require a great amount of effort to achieve?
+    e. PostEffortBase[Lvl1, Lvl2, Lvl3]: How much effort would you need to put into to achieve
+    f. PostLikeBase[Lvl1, Lvl2, Lvl3: What is the likelihood you will achieve (assuming the effort you would put in)
+    
+```{r }
+sales <-data.table::fread('~/Dropbox/pkg.data/sales/raw/20142015 Comcast w SurveyQs Conf.csv')
+spss <- foreign::read.spss('~/Dropbox/pkg.data/sales/raw/2014 2015 Comcast w  2015 Survey Qs Conf.sav')
+```
+
