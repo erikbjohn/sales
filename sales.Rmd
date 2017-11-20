@@ -7,7 +7,10 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 library(data.table)
 library(foreign)
+sales <- data.table::fread('~/Dropbox/pkg.data/sales/raw/20142015 Comcast w SurveyQs Conf.csv')
+spss <- foreign::read.spss('~/Dropbox/pkg.data/sales/raw/2014 2015 Comcast w  2015 Survey Qs Conf.sav')
 ```
+
 
 # Sales project: Comcast Data
 
@@ -29,8 +32,25 @@ Question of how hard they are going to work. If likelihood is 100\% but don't ha
 ## 2015
 
 1. Goal Selection
+
+```{r}
+pre.start <- which(names(sales)=='PreSurveyTaken')
+pre.end <- which(names(sales)=='Gender')
+pre.surveyFields <- names(sales)[pre.start:pre.end]
+```
+
+GoalLevel[2014,2015]
+BaseObjective[2014, 2015]
+GoalLevel/GoalLevel
+
+
 2. Survey (Nothing about 2014 program)
+    a. all names between PreSurveyTaken and Dups `r print(pre.surveyFields)`
+
+All performance fields start before *PreSurveyTaken*
+
 3. Performance data
+
 4. Post Survey (If there was a 2016 program what is the likelihood of achieving you would take goal level 1,2,3 next time )
     a. PostEffort: The goal required a great amount of effort to achieve?
     b. PostEffortSatsf: Are you satisfied with the amount of effort you put in?
@@ -39,8 +59,5 @@ Question of how hard they are going to work. If likelihood is 100\% but don't ha
     e. PostEffortBase[Lvl1, Lvl2, Lvl3]: How much effort would you need to put into to achieve
     f. PostLikeBase[Lvl1, Lvl2, Lvl3: What is the likelihood you will achieve (assuming the effort you would put in)
     
-```{r }
-sales <-data.table::fread('~/Dropbox/pkg.data/sales/raw/20142015 Comcast w SurveyQs Conf.csv')
-spss <- foreign::read.spss('~/Dropbox/pkg.data/sales/raw/2014 2015 Comcast w  2015 Survey Qs Conf.sav')
-```
+
 
